@@ -1,0 +1,13 @@
+services:
+  - docker
+  - ovs
+  - SONiC
+  
+install:
+  - ./install_docker_ovs.sh
+
+script:
+  - ./load_image.sh
+  - ./start.sh
+  - ./test.sh
+  - ./stop.sh
