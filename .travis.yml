@@ -3,8 +3,6 @@ dist: trusty
 
 services:
   - docker
-  - ovs
-  - SONiC
   
 install:
   - ./install_docker_ovs.sh
