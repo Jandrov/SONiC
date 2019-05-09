@@ -1,0 +1,28 @@
+ {
+    "VLAN": {
+        "Vlan15": {
+            "members": [
+                "Ethernet0"
+            ], 
+            "vlanid": "15"
+        }, 
+        "Vlan10": {
+            "members": [
+                "Ethernet1"
+            ], 
+            "vlanid": "10"
+        }
+    },
+    "VLAN_MEMBER": {
+        "Vlan15|Ethernet0": {
+            "tagging_mode": "untagged"
+        },
+        "Vlan10|Ethernet1": {
+            "tagging_mode": "untagged"
+        }
+    },
+    "VLAN_INTERFACE": {
+        "Vlan15|10.0.0.0/31": {},
+        "Vlan10|192.168.1.1/24": {}
+    }
+}
