@@ -1,3 +1,6 @@
+language:
+  - python
+  
 services:
   - docker
   - ovs
