@@ -31,9 +31,9 @@ sudo docker exec -d host2 sysctl net.ipv6.conf.eth0.disable_ipv6=1
 sudo docker exec -d host2 sysctl net.ipv6.conf.eth1.disable_ipv6=1
 
 #Configuracion de las ip de los hosts
-sudo docker exec -d host1 ifconfig eth1 192.168.1.2/24 mtu 1400
+sudo docker exec -d host1 ip eth1 192.168.1.2/24 mtu 1400
 sudo docker exec -d host1 ip route replace default via 192.168.1.1
-sudo docker exec -d host2 ifconfig eth1 192.168.2.2/24 mtu 1400
+sudo docker exec -d host2 ip eth1 192.168.2.2/24 mtu 1400
 sudo docker exec -d host2  ip route replace default via 192.168.2.1
 
 
