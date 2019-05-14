@@ -2,10 +2,6 @@ sudo: required
 
 services:
   - docker
- 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y net-tools iputils-ping
   
 install:
   - ./install_docker_ovs.sh
