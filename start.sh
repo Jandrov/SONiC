@@ -60,3 +60,4 @@ sudo docker exec -d switch2 ip netns exec sw_net ip link set sw_port1 up
 echo "Booting switches, please wait ~1 minute for switches to load"
 sudo docker exec -d switch1 sh /sonic/scripts/startup.sh
 sudo docker exec -d switch2 sh /sonic/scripts/startup.sh
+sleep 60
