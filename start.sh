@@ -1,4 +1,9 @@
 #!/bin/bash
+
+#Contruimos las imagenes atendiendo al Dockerfile
+sudo docker build -t docker-sonic-p4
+sudo docker build -t ubuntu
+
 #Creacion de contenedores DOCKER
 sudo docker run --net=none --privileged --entrypoint /bin/bash --name switch1 -it -d -v $PWD/switch1:/sonic docker-sonic-p4:latest
 sudo docker run --net=none --privileged --entrypoint /bin/bash --name switch2 -it -d -v $PWD/switch2:/sonic docker-sonic-p4:latest
@@ -23,8 +28,6 @@ sudo ovs-vsctl add-br host2_switch2
 #Anadimos los puertos correspondientes y conectamos los containers con OVS bridge
 sudo ovs-docker add-port host2_switch2 sw_port1 switch2
 sudo ovs-docker add-port host2_switch2 eth1 host2
-
-sudo docker exec -d $(docker ps -a -q) apt-get update && apt-get install -y net-tools iputils-ping
 
 sudo docker exec -d host1 sysctl net.ipv6.conf.eth0.disable_ipv6=1
 sudo docker exec -d host1 sysctl net.ipv6.conf.eth1.disable_ipv6=1
