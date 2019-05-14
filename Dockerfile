@@ -1,3 +1,5 @@
-RUN sudo apt-get update
-RUN sudo apt-get -y install net-tools
-RUN apt-get install -y iputils-ping
+FROM ubuntu:latest
+
+RUN apt-get -y update
+RUN apt-get -y install net-tools
+RUN apt-get -y iputils-ping
