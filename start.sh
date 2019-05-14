@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #Contruimos las imagenes atendiendo al Dockerfile
-sudo docker build -t docker-sonic-p4
-sudo docker build -t ubuntu
+sudo docker build docker-sonic-p4:latest
+sudo docker build ubuntu:latest
 
 #Creacion de contenedores DOCKER
 sudo docker run --net=none --privileged --entrypoint /bin/bash --name switch1 -it -d -v $PWD/switch1:/sonic docker-sonic-p4:latest
