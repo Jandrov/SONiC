@@ -24,6 +24,7 @@ sudo ovs-vsctl add-br host2_switch2
 sudo ovs-docker add-port host2_switch2 sw_port1 switch2
 sudo ovs-docker add-port host2_switch2 eth1 host2
 
+sudo docker exec -d $(docker ps -a -q) apt-get update && apt-get install -y net-tools iputils-ping
 
 sudo docker exec -d host1 sysctl net.ipv6.conf.eth0.disable_ipv6=1
 sudo docker exec -d host1 sysctl net.ipv6.conf.eth1.disable_ipv6=1
