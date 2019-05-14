@@ -4,6 +4,7 @@ services:
   - docker
   
 before_install:
+  - ./install_docker_ovs.sh
   - sudo docker exec -d host1 sysctl net.ipv6.conf.eth0.disable_ipv6=1
   - sudo docker exec -d host1 sysctl net.ipv6.conf.eth1.disable_ipv6=1
   - sudo docker exec -d host2 sysctl net.ipv6.conf.eth0.disable_ipv6=1
@@ -12,10 +13,7 @@ before_install:
   - sudo docker exec -d host1 ip route replace default via 192.168.1.1
   - sudo docker exec -d host2 ifconfig eth1 192.168.2.2/24 mtu 1400
   - sudo docker exec -d host2 ip route replace default via 192.168.2.1
-  
-install:
-  - ./install_docker_ovs.sh
-
+ 
 script:
   - ./load_image.sh
   - ./start.sh
