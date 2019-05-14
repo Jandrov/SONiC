@@ -2,8 +2,8 @@
 #Creacion de contenedores DOCKER
 sudo docker run --net=none --privileged --entrypoint /bin/bash --name switch1 -it -d -v $PWD/switch1:/sonic docker-sonic-p4:latest
 sudo docker run --net=none --privileged --entrypoint /bin/bash --name switch2 -it -d -v $PWD/switch2:/sonic docker-sonic-p4:latest
-sudo docker run --net=none --privileged --entrypoint /bin/bash --name host1 -it -d trusty
-sudo docker run --net=none --privileged --entrypoint /bin/bash --name host2 -it -d trusty
+sudo docker run --net=none --privileged --entrypoint /bin/bash --name host1 -it -d ubuntu:latest 
+sudo docker run --net=none --privileged --entrypoint /bin/bash --name host2 -it -d ubuntu:latest
 
 #Creamos los puentes que conectan los dispositivos virtuales (hosts y switches):
 #Creamos un bridge nuevo
