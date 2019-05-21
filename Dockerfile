@@ -1,7 +1,7 @@
 FROM ubuntu:latest
-RUN apt-get install -y update \
+RUN apt-get update && apt-get install -y \
     net-tools
     
 FROM docker-sonic-p4:latest
-RUN apt-get install -y update \
+RUN apt-get update && apt-get install -y \
     net-tools
