@@ -2,7 +2,8 @@ wget https://sonic-jenkins.westus2.cloudapp.azure.com/job/p4/job/buildimage-p4-a
 sudo docker load < docker-sonic-p4.gz
 
 #Contruimos las imagenes atendiendo al Dockerfile
-sudo docker build -t docker-sonic-p4:latest .
-sudo docker build -t ubuntu:latest .
+#sudo docker build -t docker-sonic-p4:latest .
+#sudo docker build -t ubuntu:latest .
+sudo docker build
 
 sudo docker images
