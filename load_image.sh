@@ -4,8 +4,7 @@ sudo docker load < docker-sonic-p4.gz
 sudo docker pull ubuntu
 
 #Contruimos las imagenes atendiendo al Dockerfile
-#sudo docker build -t ubuntu .
-#sudo docker build -t docker-sonic-p4 .
-sudo docker build .
+docker build --build-arg imagename=ubuntu .
+docker build --build-arg imagename=docker-sonic-p4 .
 
 sudo docker images
