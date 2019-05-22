@@ -6,6 +6,8 @@ sudo docker run --net=none --privileged --entrypoint /bin/bash --name switch2 -i
 sudo docker run --net=none --privileged --entrypoint /bin/bash --name host1 -it -d ubuntu:latest 
 sudo docker run --net=none --privileged --entrypoint /bin/bash --name host2 -it -d ubuntu:latest
 
+sudo docker ps
+
 #Creamos los puentes que conectan los dispositivos virtuales (hosts y switches):
 #Creamos un bridge nuevo
 sudo ovs-vsctl add-br switch1_switch2
