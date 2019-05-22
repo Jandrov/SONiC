@@ -6,6 +6,6 @@ sudo docker pull ubuntu
 #Contruimos las imagenes atendiendo al Dockerfile
 #sudo docker build -t ubuntu .
 #sudo docker build -t docker-sonic-p4 .
-sudo build .
+sudo docker build .
 
 sudo docker images
