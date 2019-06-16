@@ -3,11 +3,15 @@ sudo: required
 services:
   - docker
   
-before_install:
+install:
   - ./install_docker_ovs.sh
   - ./load_image.sh
   
+before_script:
+  - ./stop.sh 
+ 
 script:
-  - ./start.sh
   - ./test.sh
+
+after_script:
   - ./stop.sh
