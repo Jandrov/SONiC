@@ -8,7 +8,7 @@ install:
   - ./load_image.sh
   
 before_script:
-  - ./stop.sh 
+  - ./start.sh 
  
 script:
   - ./test.sh
