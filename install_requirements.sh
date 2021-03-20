@@ -18,4 +18,4 @@ sudo apt-get update
 sudo apt-get install -y openvswitch-switch
 sudo curl -L https://github.com/openvswitch/ovs/raw/master/utilities/ovs-docker -o /usr/bin/ovs-docker
 sudo chmod a+x /usr/bin/ovs-docker
-
+sudo apt-get install -y bridge-utils

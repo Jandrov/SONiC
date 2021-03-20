@@ -1,19 +1,20 @@
-language: bash
+language: shell
 os: linux
-sudo: required
+dist: trusty
 
 services:
   - docker
   
 install:
-  - ./install_docker_ovs.sh
-  - ./load_image.sh
+  - sudo apt-get install -y net-tools
+  - sudo ./install_requirements.sh
+  - sudo ./load_image.sh
   
 before_script:
-  - ./start.sh 
- 
+  - sudo ./start.sh 
+
 script:
-  - ./test.sh
+  - sudo ./test.sh
 
 after_script:
-  - ./stop.sh
+  - sudo ./stop.sh

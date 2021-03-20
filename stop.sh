@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "Borrando los contenedores y bridges con el mismo nombre..."
 sudo docker rm -f switch1
 sudo docker rm -f switch2
