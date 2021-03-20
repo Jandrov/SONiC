@@ -60,4 +60,4 @@ sudo docker exec -d switch1 sh /sonic/scripts/startup.sh
 sudo docker exec -d switch2 sh /sonic/scripts/startup.sh
 sleep 60
 
-docker ps
+sudo docker ps
