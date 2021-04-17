@@ -14,10 +14,10 @@ fi
 # Docker on Mac requires mapping a different port to standard SSH port
 if [[ "$KERNEL_NAME" == "Darwin" ]]; then
     sudo docker run --privileged --entrypoint /bin/bash --name ${NAMES[0]} -it -d -p 2022:22 -v $PWD/switch1:/sonic docker-sonic-p4:latest
-    sudo docker run --privileged --entrypoint /bin/bash --name ${NAMES[1]} -it -d -p 2023:22 -v $PWD/switch2:/sonic docker-sonic-p4:latest
+    sudo docker run --privileged --entrypoint /bin/bash --name ${NAMES[1]} -it -d -p 2023:22 -v $PWD/switch1:/sonic docker-sonic-p4:latest
 else
     sudo docker run --privileged --entrypoint /bin/bash --name ${NAMES[0]} -it -d -v $PWD/switch1:/sonic docker-sonic-p4:latest
-    sudo docker run --privileged --entrypoint /bin/bash --name ${NAMES[1]} -it -d -v $PWD/switch2:/sonic docker-sonic-p4:latest
+    sudo docker run --privileged --entrypoint /bin/bash --name ${NAMES[1]} -it -d -v $PWD/switch1:/sonic docker-sonic-p4:latest
 fi
 
 for name in "${NAMES[@]}"; do
