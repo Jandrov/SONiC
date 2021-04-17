@@ -21,17 +21,6 @@
             "tagging_mode": "untagged"
         }
     },
-    "MGMT_INTERFACE": {
-	"eth0|172.17.0.2/16": {
-	 "gwaddr": "172.17.0.1"
-	}
-    },
-    "MGMT_PORT": {
-        "eth0": {
-            "alias": "eth0",
-            "admin_status": "up"
-        }
-    },
     "VLAN_INTERFACE": {
         "Vlan15|10.0.0.0/31": {},
         "Vlan10|192.168.1.1/24": {}
