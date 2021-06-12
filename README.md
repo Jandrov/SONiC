@@ -11,7 +11,7 @@ Estos scripts deben ejecutarse al menos una vez antes de poder cargar alguno de 
    Para cargar y construir las imágenes de SONiC-P4 y Ubuntu 14.04.
 
 
-### Entorno habitual de SONIC P4 Software Switch descrito [aquí](https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch)
+### Entorno de SONIC P4 Software Switch descrito [aquí](https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch)
 Tendremos la siguiente topología:
   host1 (Ubuntu 14:04, 192.168.1.2/24) <--> switch1 (SONiC) <--> switch2 (SONiC) <--> host2 (Ubuntu 14:04, 192.168.2.2/24)
 
@@ -51,7 +51,7 @@ These scripts must be executed at least once before being able to load any of th
    To load and build SONiC-P4 and Ubuntu 14.04 images.
 
 
-### Entorno habitual de SONIC P4 Software Switch descrito [aquí](https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch)
+### SONIC P4 Software Switch environment described [here](https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch)
 We will have the next topology:
   host1 (Ubuntu 14:04, 192.168.1.2/24) <--> switch1 (SONiC) <--> switch2 (SONiC) <--> host2 (Ubuntu 14:04, 192.168.2.2/24)
 
