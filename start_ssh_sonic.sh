@@ -4,13 +4,14 @@ NAMES=(switch1-ssh switch2-ssh)
 NETWORK=my-network
 KERNEL_NAME=$(uname)
 
-# Check correct parameters
+# Comprobamos que los parámetros son correctos
+# We check that parameters are correct
 if [ ! $1 ]; then
     echo "[ERROR] Usage is: 'source start_ssh_sonic.sh <root_password>'"
     return
 fi
 
-
+# Docker en Mac requiere asociar un puerto distinto al estándar de SSH
 # Docker on Mac requires mapping a different port to standard SSH port
 if [[ "$KERNEL_NAME" == "Darwin" ]]; then
     sudo docker run --privileged --entrypoint /bin/bash --name ${NAMES[0]} -it -d -p 2022:22 -v $PWD/switch1:/sonic docker-sonic-p4:latest
@@ -37,6 +38,7 @@ done
 
 sleep 10
 
+# Docker en Mac expone el contenedor en localhost
 # Docker on Mac exposes container in localhost
 if [[ "$KERNEL_NAME" == "Darwin" ]]; then
     export SWITCH1_ADDR=localhost
@@ -50,15 +52,16 @@ else
     export SWITCH2_PORT=22
 fi
 
-
-# Create our own network and connect the switches to that network
+# Creamos nuestra propia red y conectamos los switches a dicha red
+# We create our own network and connect the switches to that network
 sudo docker network create $NETWORK
 for name in "${NAMES[@]}"; do
     echo "Adding $name to the network $NETWORK"
     sudo docker network connect $NETWORK $name
 done
 
-# Check IP addresses from our network assigned to each container
+# Obtenemos las direcciones IP asignadas a cada contenedor en nuestra red
+# We obtain IP addresses from our network assigned to each container
 ADDRESSES=($SWITCH1_ADDR $SWITCH2_ADDR)
 PORTS=($SWITCH1_PORT $SWITCH2_PORT)
 i=0
