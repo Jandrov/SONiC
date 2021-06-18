@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "42f31b17-97b3-4cf0-96b9-0b44fbe50f92",
+		"name": "Frinx-UniConfig",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Requests SONiC",
+			"item": [
+				{
+					"name": "mount switch1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Response: \" + responseBody)",
+									"",
+									"pm.test(\"Status code\", function () {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dGVzdDp0ZXN0"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"network-topology:node\" :\n    [{\n        \"network-topology:node-id\" : \"sonic\",\n        \n        \"cli-topology:host\" : \"localhost\",\n        \"cli-topology:port\" : \"2022\",\n        \"cli-topology:transport-type\" : \"ssh\",\n        \n        \"cli-topology:device-type\" : \"sonic\",\n        \"cli-topology:device-version\" : \"*\",\n        \n        \"cli-topology:username\" : \"root\",\n        \"cli-topology:password\" : \"root\",\n        \n        \"cli-topology:journal-size\": 150,\n        \"cli-topology:dry-run-journal-size\": 150,\n        \n        \"node-extension:reconcile\": false\n    }]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/data/network-topology:network-topology/topology=cli/node=sonic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"data",
+								"network-topology:network-topology",
+								"topology=cli",
+								"node=sonic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check uniconfig status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8181/rests/data/network-topology:network-topology/topology=uniconfig/node=sonic?content=nonconfig",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"data",
+								"network-topology:network-topology",
+								"topology=uniconfig",
+								"node=sonic"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": "nonconfig"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get interface eth1 config",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/data/network-topology:network-topology/topology=uniconfig/node=sonic/frinx-uniconfig-topology:configuration/frinx-openconfig-interfaces:interfaces/interface=eth1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"data",
+								"network-topology:network-topology",
+								"topology=uniconfig",
+								"node=sonic",
+								"frinx-uniconfig-topology:configuration",
+								"frinx-openconfig-interfaces:interfaces",
+								"interface=eth1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "config desc interface eth1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"frinx-openconfig-interfaces:interface\": [\n        {\n            \"name\": \"eth1\",\n            \"config\": {\n                \"type\": \"iana-if-type:ethernetCsmacd\",\n                \"description\": \"mi nueva descripcion de uniconfig\",\n                \"name\": \"eth1\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/data/network-topology:network-topology/topology=uniconfig/node=sonic/frinx-uniconfig-topology:configuration/frinx-openconfig-interfaces:interfaces/interface=eth1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"data",
+								"network-topology:network-topology",
+								"topology=uniconfig",
+								"node=sonic",
+								"frinx-uniconfig-topology:configuration",
+								"frinx-openconfig-interfaces:interfaces",
+								"interface=eth1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disable interface eth1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"frinx-openconfig-interfaces:interface\": [\n        {\n            \"name\": \"eth1\",\n            \"config\": {\n                \"type\": \"iana-if-type:ethernetCsmacd\",\n                \"enabled\": false,\n                \"name\": \"eth1\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/data/network-topology:network-topology/topology=uniconfig/node=sonic/frinx-uniconfig-topology:configuration/frinx-openconfig-interfaces:interfaces/interface=eth1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"data",
+								"network-topology:network-topology",
+								"topology=uniconfig",
+								"node=sonic",
+								"frinx-uniconfig-topology:configuration",
+								"frinx-openconfig-interfaces:interfaces",
+								"interface=eth1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enable interface eth1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"frinx-openconfig-interfaces:interface\": [\n        {\n            \"name\": \"eth1\",\n            \"config\": {\n                \"type\": \"iana-if-type:ethernetCsmacd\",\n                \"enabled\": true,\n                \"name\": \"eth1\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/data/network-topology:network-topology/topology=uniconfig/node=sonic/frinx-uniconfig-topology:configuration/frinx-openconfig-interfaces:interfaces/interface=eth1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"data",
+								"network-topology:network-topology",
+								"topology=uniconfig",
+								"node=sonic",
+								"frinx-uniconfig-topology:configuration",
+								"frinx-openconfig-interfaces:interfaces",
+								"interface=eth1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dry-run commit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic dGVzdDp0ZXN0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"input\" : {\n\t\t\"target-nodes\": {\n\t\t\t\"node\" : [\"sonic\"]\n\t\t}\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/operations/dryrun-manager:dryrun-commit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"operations",
+								"dryrun-manager:dryrun-commit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "commit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic dGVzdDp0ZXN0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"input\" : {\n\t\t\"target-nodes\": {\n\t\t\t\"node\" : [\"sonic\"]\n\t\t}\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/operations/uniconfig-manager:commit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"operations",
+								"uniconfig-manager:commit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unmount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Response: \" + responseBody)",
+									"",
+									"pm.test(\"Status code\", function () {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dGVzdDp0ZXN0"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"network-topology:node\" :\n    [{\n        \"network-topology:node-id\" : \"sonic\",\n        \n        \"cli-topology:host\" : \"localhost\",\n        \"cli-topology:port\" : \"2022\",\n        \"cli-topology:transport-type\" : \"ssh\",\n        \n        \"cli-topology:device-type\" : \"sonic\",\n        \"cli-topology:device-version\" : \"*\",\n        \n        \"cli-topology:username\" : \"root\",\n        \"cli-topology:password\" : \"root\",\n        \n        \"cli-topology:journal-size\": 150,\n        \"cli-topology:dry-run-journal-size\": 150,\n        \n        \"node-extension:reconcile\": false\n    }]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/rests/data/network-topology:network-topology/topology=cli/node=sonic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"rests",
+								"data",
+								"network-topology:network-topology",
+								"topology=cli",
+								"node=sonic"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
